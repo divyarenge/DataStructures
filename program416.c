@@ -1,0 +1,141 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+    struct node *prev;
+};
+
+typedef struct node NODE;
+typedef struct node* PNODE;
+typedef struct node** PPNODE;
+
+void InsertFirst(PPNODE first, PPNODE last , int no)
+{
+    PNODE newn = NULL;
+
+    newn = (PNODE)malloc(sizeof(NODE));
+
+    newn -> data = no;
+    newn -> next = NULL;
+    newn -> prev = NULL;
+
+    if(*first == NULL && *last == NULL)
+    {
+        *first  = newn;
+        *last = newn;
+    }
+    else
+    {
+        newn -> next = *first;
+        (*first) -> prev = newn;
+        *first = newn;
+    }
+
+    (*last) -> next = *first;
+    (*first) -> next = *last;
+}
+
+void Insertlast(PPNODE first, PPNODE last, int no)
+{
+    PNODE newn = NULL;
+
+    newn = (PNODE)malloc(sizeof(NODE));
+
+    newn -> data = no;
+    newn -> next = NULL;
+    newn -> prev = NULL;
+
+    if(*first == NULL && *last == NULL)
+    {
+        *first  = newn;
+        *last = newn;
+    }
+    else
+    {
+
+    }
+
+    (*last) -> next = *first;
+    (*first) -> next = *last;
+}
+
+void DeleteFirst(PPNODE first, PPNODE last)
+{
+
+}
+
+void DeleteLast(PPNODE first, PPNODE last)
+{
+    
+}
+
+void Display(PNODE first, PNODE last)
+{
+    //IMPORTANT
+    if(first == NULL && last == NULL)//LL is empty
+    {
+        printf("LinkedList is Empty\n");
+        return;
+    }
+
+    printf(" <=> ");
+    
+    do
+    {
+        printf("| %d | <=> ",first -> data);
+        first = first -> next;
+    } while (first != last -> next);
+
+    printf("\n");
+}
+
+int Count(PNODE first, PNODE last)
+{
+    int iCount = 0;
+
+    if(first == NULL && last == NULL)   //LL is empty
+    {
+        return 0;
+    }
+
+    do
+    {
+        iCount++;
+        first = first -> next;
+    } while (first != last -> next);
+
+    return iCount;
+}
+
+void InsertAtPos(PPNODE first, PPNODE last, int no, int pos)
+{
+
+}
+
+void DeleteAtPos(PPNODE first, PPNODE last, int pos)
+{
+    
+}
+
+int main()
+{
+    int iRet = 0;
+
+    PNODE head = NULL;
+    PNODE tail = NULL;
+
+    /*
+    InsertFirst(&head,&tail,51);
+    InsertFirst(&head,&tail,21);
+    InsertFirst(&head,&tail,11);
+    */
+
+    Display(head,tail);
+    iRet = Count(head,tail);
+    printf("Number of Nodes : %d\n",iRet);
+
+    return 0;
+}
