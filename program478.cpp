@@ -124,7 +124,7 @@ int main()
 
     cout<<"Summation of all elements : "<<obj->Addition()<<"\n";
     cout<<"Maximum of all elements : "<<obj->Maximum()<<"\n";
-    cout<<"Frequency is : "<<obj->Frequency()<<"\n";
+    cout<<"Frequency is : "<<obj->Frequency(1)<<"\n";
 
     //Step 3 : Deallocate the memory
     delete obj;
